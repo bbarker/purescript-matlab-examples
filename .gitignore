@@ -1,0 +1,7 @@
+/.*
+!/.gitignore
+!/.eslintrc.json
+!/.travis.yml
+/output/
+.\#*
+/dist/
