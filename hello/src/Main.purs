@@ -1,10 +1,11 @@
 module Main where
 
-import Prelude(show, (+))
+import Prelude(Unit, show, (+))
 import Effect.Class.Console (log)
-
+import Effect (Effect)
 
 -- main = log "Hello, World!"
+main :: Effect Unit
 main = log sumStr
   where
   sumXY = myAdd 3 5
