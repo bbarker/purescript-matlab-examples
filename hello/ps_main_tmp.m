@@ -1,3 +1,4 @@
+addpath(['purescript-matlab/src/Runtime']);
 
 PS__main();
 function psRetVal = PS__myAdd()
@@ -9,31 +10,15 @@ function psRetVal = PS__myAdd()
   end
   psRetVal = @(x) PS__nested2(x);
 end
+% function psRetVal = PS__main()
+%   sumXY = Apply(@PS__myAdd, 3, 5);
+%   sumStr = Apply(@Data_Show.PS__show, Data_Show.PS__showInt(), sumXY);
+%   psRetVal = Apply(@Effect_Class_Console.PS__log, Effect_Class.PS__monadEffectEffect(), sumStr);
+% end
 
 
 function PS__main()
-  % DEBUG:
-  % psTmpFun = PS__myAdd();
-  % psTmpFun = psTmpFun(3);
-  % psRetVal = psTmpFun(5);
-
   psRetVal = Apply(@PS__myAdd, 3, 5);
-%  tmp = {3, 5};
-%  psRetVal = Apply(@PS__myAdd, tmp{:});
   disp(psRetVal);
 end
 
-function applyRetVal = Apply(psFun, varargin)
-  psFunEvaled = psFun();
-  applyRetVal = ApplyGo(psFunEvaled, varargin{:});
-end
-
-function applyRetVal = ApplyGo(psFun, varargin)
-  if numel(varargin) > 1
-    rest = varargin(2:end);
-    psFunNext = psFun(varargin{1});
-    applyRetVal = ApplyGo(psFunNext, rest{:});
-  else
-    applyRetVal = psFun(varargin{1});
-  end
-end

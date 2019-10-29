@@ -123,6 +123,9 @@ let upstream =
 
 let overrides = {=}
 
+let additions = {=} 
+
+{-
 let additions =
   { matlab-ffi =
       { dependencies = [ ] : List Text
@@ -132,6 +135,6 @@ let additions =
           "master"
       }
   }
-
+-}
 
 in  upstream // overrides // additions
